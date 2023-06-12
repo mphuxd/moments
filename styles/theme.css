@@ -1,0 +1,7 @@
+.theme--light {
+  --theme-bg: white;
+}
+
+.theme--dark {
+  --theme-bg: black;
+}

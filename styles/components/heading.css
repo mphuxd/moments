@@ -1,0 +1,16 @@
+@tailwind components;
+
+@layer components {
+  .heading--1 {
+    @apply text-3xl font-semibold leading-none md:text-5xl xl:text-6xl;
+  }
+  .heading--2 {
+    @apply text-2xl leading-7 md:text-4xl md:leading-tight lg:text-4xl xl:text-3xl;
+  }
+  .heading--3 {
+    @apply text-xl leading-6;
+  }
+  .heading--4 {
+    @apply font-mono text-base font-normal leading-none;
+  }
+}

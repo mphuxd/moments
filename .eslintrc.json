@@ -1,0 +1,36 @@
+{
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.*.ts",
+        "**/*.tsx",
+        "*.js",
+        "*.jsx",
+        "*.css"
+      ],
+      "rules": {
+        "react/tsx-filename-extension": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/jsx-no-constructed-context-values": "off",
+        "import/prefer-default-export": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/require-default-props": "off"
+      },
+      "extends": [
+        "next/core-web-vitals",
+        "airbnb",
+        "airbnb-typescript",
+        "prettier",
+        "plugin:@next/next/recommended",
+        "next"
+      ],
+      "parserOptions": {
+        "ecmaVersion": 6,
+        "project": [
+          "./tsconfig.json"
+        ]
+      }
+    }
+  ]
+}

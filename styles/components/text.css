@@ -1,0 +1,13 @@
+@tailwind components;
+
+@layer components {
+  .text--small {
+    @apply text-sm;
+  }
+  .text--base {
+    @apply text-base;
+  }
+  .text--large {
+    @apply text-xl;
+  }
+}
