@@ -100,10 +100,10 @@ function SlideMobile({
             </div>
 
             {/* image/bg */}
-            <div className="absolute inset-0 max-h-[1080px] ">
+            <div className="absolute inset-0 max-h-[1080px]">
               {image && !video && (
                 <Image
-                  className="absolute inset-0 h-screen max-h-[1080px] min-h-[700px] w-full object-cover"
+                  className="absolute inset-0 h-screen max-h-[1080px] min-h-[700px] w-auto object-cover"
                   src={image.src}
                   width={image.width}
                   height={image.height}

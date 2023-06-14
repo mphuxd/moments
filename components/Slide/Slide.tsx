@@ -3,7 +3,6 @@ import Image from "next/image";
 import cx from "classnames";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useWindowSize } from "@/lib/useWindowSize";
 import { Grid } from "../Grid";
 import { Heading } from "../Heading";
 import { Text } from "../Text";
@@ -42,9 +41,6 @@ function Slide({
   const ref = useRef() as MutableRefObject<HTMLDivElement>;
   const locationClassNames = location === "start" ? "" : "justify-end";
 
-  console.log("start");
-  console.log(startValue);
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       const timeline = gsap.timeline();
@@ -56,9 +52,8 @@ function Slide({
       ScrollTrigger.create({
         animation: timeline,
         start: startValue,
-        markers: true,
         scrub: false,
-        toggleActions: "play complete complete reset",
+        toggleActions: "play reset play reset",
         end: () => `+=${ref.current.offsetHeight}`,
       });
     }, ref);

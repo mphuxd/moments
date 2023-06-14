@@ -18,18 +18,19 @@ function SlideShowContainer() {
           totalHeight + slide.offsetHeight,
         0
       );
-      console.log(`height: ${height}`);
-      console.log(`container: ${containerHeight}`);
+
       ref.current.style.height = `${height}px`;
       ScrollTrigger.create({
         trigger: ref.current,
         start: "top top",
         pin: true,
+        anticipatePin: 1,
         pinSpacing: false,
         scrub: false,
         end: "bottom top",
       });
-      if (height !== containerHeight && height) setContainerHeight(height);
+      if (height !== containerHeight && height)
+        setContainerHeight(() => height);
     }, ref);
 
     return () => ctx.revert();

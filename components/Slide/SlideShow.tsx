@@ -82,7 +82,8 @@ function SlideShow() {
         }
       });
 
-      if (!isEqual(startValues, newStartValues)) setStartValues(newStartValues);
+      if (!isEqual(startValues, newStartValues))
+        setStartValues(() => newStartValues);
     }, containerRef);
     return () => ctx.revert();
   }, [startValues, setColorScheme]);

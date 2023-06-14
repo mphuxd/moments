@@ -17,7 +17,6 @@ function SlideShowContainer() {
         trigger: ref.current,
         start: "top center",
         end: "bottom center",
-        markers: true,
         onEnter: () => setColorScheme("dark"),
         onLeave: () => setColorScheme("light"),
         onLeaveBack: () => setColorScheme("light"),
