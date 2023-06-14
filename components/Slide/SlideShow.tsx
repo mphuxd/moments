@@ -1,6 +1,6 @@
 import React, {
   MutableRefObject,
-  useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   useContext,
@@ -18,7 +18,7 @@ function SlideShow() {
   const [startValues, setStartValues] = useState<Array<string>>([]);
   const { setColorScheme } = useContext(ThemeContext);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context((self) => {
       if (self.selector === undefined) return;
       const NUM_SLIDES = 5;

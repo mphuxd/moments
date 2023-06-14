@@ -1,9 +1,8 @@
-import React, { MutableRefObject, useEffect, useRef } from "react";
+import React, { MutableRefObject, useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import cx from "classnames";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useWindowSize } from "@/lib/useWindowSize";
 import { Grid } from "../Grid";
 import { Heading } from "../Heading";
 import { Text } from "../Text";
@@ -25,10 +24,9 @@ interface SlideProps extends React.ComponentPropsWithoutRef<"div"> {
   video?: {
     src: string;
   };
-  startValue: string;
 }
 
-function Slide({
+function SlideMobile({
   eyebrow,
   heading,
   description1,
@@ -36,16 +34,12 @@ function Slide({
   location = "start",
   image,
   video,
-  startValue,
   ...props
 }: SlideProps) {
-  const ref = useRef() as MutableRefObject<HTMLDivElement>;
+  const myRef = useRef() as MutableRefObject<HTMLDivElement>;
   const locationClassNames = location === "start" ? "" : "justify-end";
 
-  console.log("start");
-  console.log(startValue);
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const timeline = gsap.timeline();
       timeline
@@ -55,29 +49,31 @@ function Slide({
 
       ScrollTrigger.create({
         animation: timeline,
-        start: startValue,
-        markers: true,
-        scrub: false,
+        trigger: myRef.current,
+        start: "top center",
         toggleActions: "play complete complete reset",
-        end: () => `+=${ref.current.offsetHeight}`,
+        end: () => `+=${myRef.current.offsetHeight}`,
       });
-    }, ref);
+    }, myRef);
     return () => ctx.revert();
-  }, [startValue, ref]);
+  }, [myRef]);
 
   return (
     <div
-      ref={ref}
-      className="slide absolute my-auto w-full overflow-hidden"
+      ref={myRef}
+      className="slide my-auto w-full overflow-hidden opacity-100"
       {...props}
     >
       <Grid>
+        {/* frame */}
         <div
           className={cx(
-            "relative col-span-full my-auto flex h-screen flex-col justify-center overflow-hidden pb-8 pt-16 text-white md:pb-8 md:pt-20 xl:py-20"
+            "relative col-span-full my-auto flex h-full  min-h-[700px] flex-col justify-center overflow-hidden pb-8 pt-16 text-white md:pb-8 md:pt-20 xl:py-20"
           )}
         >
-          <div className="relative h-screen max-h-[1080px] overflow-hidden rounded-lg">
+          {/* container */}
+          <div className="relative h-full max-h-[1080px] overflow-hidden rounded-lg">
+            {/* content */}
             <div className="absolute inset-0 z-10 flex max-h-[1080px] w-full flex-col justify-between px-4 pb-4 pt-4 md:p-8 md:pb-8 xl:pb-20 2xl:pb-32">
               <div className="eyebrow">
                 <Heading as="h4" variant="h4" className="uppercase">
@@ -102,10 +98,12 @@ function Slide({
                 </div>
               </div>
             </div>
-            <div className="absolute inset-0 h-screen max-h-[1080px] w-screen overflow-hidden">
+
+            {/* image/bg */}
+            <div className="absolute inset-0 max-h-[1080px] ">
               {image && !video && (
                 <Image
-                  className="absolute inset-0 aspect-[16/10] h-screen max-h-[1080px] min-h-[700px] w-full object-cover"
+                  className="absolute inset-0 h-screen max-h-[1080px] min-h-[700px] w-full object-cover"
                   src={image.src}
                   width={image.width}
                   height={image.height}
@@ -133,4 +131,4 @@ function Slide({
   );
 }
 
-export default Slide;
+export default SlideMobile;
