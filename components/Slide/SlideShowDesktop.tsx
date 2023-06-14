@@ -1,19 +1,24 @@
 import { MutableRefObject, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SlideProps } from "./SlideMobile";
 import SlideShow from "./SlideShow";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function SlideShowContainer() {
+export interface SlideShowDesktopProps {
+  slides: SlideProps[];
+}
+
+function SlideShowDesktop({ slides }: SlideShowDesktopProps) {
   const [containerHeight, setContainerHeight] = useState(0);
   const ref = useRef() as MutableRefObject<HTMLDivElement>;
 
   useLayoutEffect(() => {
     const ctx = gsap.context((self) => {
       if (self.selector === undefined) return;
-      const slides = self.selector(".slide");
-      const height = slides.reduce(
+      const slidesRef = self.selector(".slide");
+      const height = slidesRef.reduce(
         (totalHeight: number, slide: { offsetHeight: any }) =>
           totalHeight + slide.offsetHeight,
         0
@@ -38,9 +43,9 @@ function SlideShowContainer() {
 
   return (
     <div ref={ref} className="w-full overflow-hidden">
-      <SlideShow />
+      <SlideShow slides={slides} />
     </div>
   );
 }
 
-export default SlideShowContainer;
+export default SlideShowDesktop;

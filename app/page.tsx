@@ -79,7 +79,90 @@ export default function Home() {
           </>
         }
       />
-      <SlideShowContainer />
+      <SlideShowContainer
+        slides={[
+          {
+            id: "lorem",
+            location: "start",
+            eyebrow: "01 Lorem",
+            heading: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+            description1:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+            description2:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+            image: {
+              src: "/images/01.jpg",
+              width: 1920,
+              height: 1080,
+              alt: "01",
+            },
+          },
+          {
+            id: "ipsum",
+            location: "start",
+            eyebrow: "02 Ipsum",
+            heading: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+            description1:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+            description2:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+            image: {
+              src: "/images/02.jpg",
+              width: 1920,
+              height: 1080,
+              alt: "02",
+            },
+          },
+          {
+            id: "dolor",
+            location: "start",
+            eyebrow: "03 Dolor",
+            heading: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+            description1:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+            description2:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+            image: {
+              src: "/images/03.jpg",
+              width: 1920,
+              height: 1080,
+              alt: "03",
+            },
+          },
+          {
+            id: "sit",
+            location: "start",
+            eyebrow: "04 Sit",
+            heading: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+            description1:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+            description2:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+            image: {
+              src: "/images/04.jpg",
+              width: 1920,
+              height: 1080,
+              alt: "04",
+            },
+          },
+          {
+            id: "amet",
+            location: "start",
+            eyebrow: "05 Amet",
+            heading: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+            description1:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+            description2:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+            image: {
+              src: "/images/05.jpg",
+              width: 1920,
+              height: 1080,
+              alt: "05",
+            },
+          },
+        ]}
+      />
       <News
         eyebrow="NEWS"
         heading="Lorem ipsum dolor sit amet consectetur adipiscing elit."

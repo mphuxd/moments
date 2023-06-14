@@ -9,7 +9,7 @@ import { Text } from "../Text";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface SlideProps extends React.ComponentPropsWithoutRef<"div"> {
+export interface SlideProps extends React.ComponentPropsWithoutRef<"div"> {
   eyebrow: string;
   heading: string;
   description1: string;
@@ -36,7 +36,7 @@ function SlideMobile({
   video,
   ...props
 }: SlideProps) {
-  const myRef = useRef() as MutableRefObject<HTMLDivElement>;
+  const ref = useRef() as MutableRefObject<HTMLDivElement>;
   const locationClassNames = location === "start" ? "" : "justify-end";
 
   useLayoutEffect(() => {
@@ -49,18 +49,18 @@ function SlideMobile({
 
       ScrollTrigger.create({
         animation: timeline,
-        trigger: myRef.current,
+        trigger: ref.current,
         start: "top center",
         toggleActions: "play complete complete reset",
-        end: () => `+=${myRef.current.offsetHeight}`,
+        end: () => `+=${ref.current.offsetHeight}`,
       });
-    }, myRef);
+    }, ref);
     return () => ctx.revert();
-  }, [myRef]);
+  }, [ref]);
 
   return (
     <div
-      ref={myRef}
+      ref={ref}
       className="slide my-auto w-full overflow-hidden opacity-100"
       {...props}
     >
