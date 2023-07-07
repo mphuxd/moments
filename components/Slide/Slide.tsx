@@ -38,7 +38,7 @@ function Slide({
   startValue,
   ...props
 }: SlideProps) {
-  const myRef = useRef() as MutableRefObject<HTMLDivElement>;
+  const ref = useRef() as MutableRefObject<HTMLDivElement>;
   const locationClassNames = location === "start" ? "" : "justify-end";
 
   useEffect(() => {
@@ -52,34 +52,35 @@ function Slide({
       ScrollTrigger.create({
         animation: timeline,
         start: startValue,
-        toggleActions: "play complete complete reset",
-        end: () => `+=${myRef.current.offsetHeight}`,
+        scrub: false,
+        toggleActions: "play reset play reset",
+        end: () => `+=${ref.current.offsetHeight}`,
       });
-    }, myRef);
+    }, ref);
     return () => ctx.revert();
-  }, [startValue, myRef]);
+  }, [startValue, ref]);
 
   return (
     <div
-      ref={myRef}
-      className="slide absolute my-auto w-full overflow-hidden opacity-100"
+      ref={ref}
+      className="slide absolute my-auto w-full overflow-hidden"
       {...props}
     >
       <Grid>
         <div
           className={cx(
-            "relative col-span-full my-auto flex h-screen min-h-[667px] flex-col justify-center overflow-hidden py-20 text-white"
+            "relative col-span-full my-auto flex h-screen flex-col justify-center overflow-hidden pb-8 pt-16 text-white md:pb-8 md:pt-20 xl:py-20"
           )}
         >
           <div className="relative h-screen max-h-[1080px] overflow-hidden rounded-lg">
-            <div className="absolute inset-0 z-10 flex max-h-[1080px] w-full flex-col justify-between px-4 py-8 md:p-8 md:pb-32 xl:pb-20 2xl:pb-32">
+            <div className="absolute inset-0 z-10 flex max-h-[1080px] w-full flex-col justify-between px-4 pb-4 pt-4 md:p-8 md:pb-8 xl:pb-20 2xl:pb-32">
               <div className="eyebrow">
                 <Heading as="h4" variant="h4" className="uppercase">
                   {eyebrow}
                 </Heading>
               </div>
               <div className={cx("flex w-full", locationClassNames)}>
-                <div className="flex flex-col gap-y-8 lg:w-3/4 xl:w-2/3 2xl:w-1/2">
+                <div className="flex flex-col gap-y-4 md:gap-y-8 lg:w-3/4 xl:w-2/3 2xl:w-1/2">
                   <div className="heading">
                     <Heading as="h2" variant="h2">
                       {heading}
@@ -96,7 +97,7 @@ function Slide({
                 </div>
               </div>
             </div>
-            <div className="absolute inset-0 h-screen max-h-[1080px] min-h-[667px] w-screen overflow-hidden">
+            <div className="absolute inset-0 h-screen max-h-[1080px] w-screen overflow-hidden">
               {image && !video && (
                 <Image
                   className="absolute inset-0 aspect-[16/10] h-screen max-h-[1080px] min-h-[700px] w-full object-cover"
@@ -108,7 +109,7 @@ function Slide({
               )}
               {!image && video && (
                 <video
-                  className="absolute inset-0 aspect-[16/10] h-screen max-h-[1080px] min-h-[667px] w-full overflow-hidden object-cover"
+                  className="absolute inset-0 aspect-[16/10] h-screen max-h-[1080px]  w-full overflow-hidden object-cover"
                   muted
                   autoPlay
                   loop

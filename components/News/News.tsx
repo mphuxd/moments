@@ -47,7 +47,7 @@ function News({
   return (
     <div
       ref={ref}
-      className="mt-[100vh] flex h-full w-full flex-col justify-center overflow-hidden text-black opacity-100"
+      className="flex h-full w-full flex-col justify-center overflow-hidden pb-40 text-black opacity-100 lg:mt-[100vh]"
       {...props}
     >
       <div className="h-full w-full">

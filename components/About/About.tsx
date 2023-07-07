@@ -64,10 +64,10 @@ function About({ heading, description, row1, row2 }: AboutProps) {
             </div>
             <div className="image mt-8 w-full md:mx-0 lg:aspect-video lg:w-1/2 xl:aspect-video">
               <Image
-                src="/images/el-capitan.png"
-                width={5120}
-                height={3200}
-                alt="El Capitan"
+                src="/images/waves.png"
+                width={3000}
+                height={2000}
+                alt="Waves"
               />
             </div>
           </div>
