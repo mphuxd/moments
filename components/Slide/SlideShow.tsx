@@ -93,8 +93,8 @@ function SlideShow({ slides }: SlideShowProps) {
         return (
           <Slide
             key={key}
-            {...slide}
             startValue={startValues[reversedSlides.length - index - 1]}
+            {...slide}
           />
         );
       })}

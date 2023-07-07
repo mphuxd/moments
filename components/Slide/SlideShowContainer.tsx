@@ -15,8 +15,9 @@ function SlideShowContainer({ slides }: SlideShowContainerProps) {
   const breakPointSize = useBreakpointSize();
   const mobileBreakpoints = ["default", "sm", "md"];
   if (!breakPointSize) return null;
-  if (mobileBreakpoints.includes(breakPointSize))
+  if (mobileBreakpoints.includes(breakPointSize)) {
     return <SlideShowMobile slides={slides} />;
+  }
   return <SlideShowDesktop slides={slides} />;
 }
 

@@ -37,7 +37,6 @@ function SlideShowMobile({ slides }: SlideShowMobileProps) {
           const { id } = slide;
           return <SlideMobile key={id} {...slide} />;
         })}
-        )
       </div>
     </div>
   );
